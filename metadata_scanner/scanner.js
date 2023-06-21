@@ -1,11 +1,11 @@
 /**
  * 🔎 NFT METADATA SCANNER v1.0
  * ℹ️ The NFT scanner reads the metadata JSON file, assigns to each items the  
- *	 	rarity score points based on attributes rarity, and produces the results in 
- *    a HTML list. 
+ *   rarity score points based on attributes rarity, and produces the results in 
+ *   a HTML list. 
  * 
  * ⚠ This tool will run only if your metadata has been 
- *		built in respect of the NFT metadata standards (example: 'trait_type':'...');
+ *   built in respect of the NFT metadata standards (example: 'trait_type':'...');
  * 
  * 
  * 🤖 XR-Droids 
