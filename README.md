@@ -20,7 +20,7 @@ This tool beautifies the output of NFT collections by calculating the rarity sco
 git clone https://github.com/XR-Droids/NFT_Metadata_Scanner.git
 ```
 
-2.  From the root of the folder, install the local web server package in order to view the output in HTML
+2.  From the root of the folder, install the local web server package in order to produce the output in HTML
 
 ```sh
 npm install local-web-server
