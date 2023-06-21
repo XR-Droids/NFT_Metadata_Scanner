@@ -1,0 +1,232 @@
+
+@font-face 
+{
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: normal;
+  src: url('assets/fonts/Jura-Medium.ttf');
+}
+
+@font-face 
+{
+  font-family: 'LT Binary Neue';
+  font-style: normal;
+  font-weight: normal;
+  src: url('assets/fonts/LTBinaryNeue-Regular.ttf');
+}
+
+@font-face 
+{
+  font-family: 'LT Binary Neue Round';
+  font-style: normal;
+  font-weight: normal;
+  src: url('assets/fonts/LTBinaryNeueRound-Regular.ttf');
+}
+
+@font-face{
+  font-family: 'Orbitron SemiBold';
+  src: url('assets/fonts/Orbitron-SemiBold.ttf');
+}
+
+@font-face{
+  font-family: 'Orbitron';
+  src: url('assets/fonts/Orbitron-Regular.ttf');
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h2
+{
+	font-family: 'LT Binary Neue', sans-serif;
+}
+
+h6 
+{
+	color: #FFFF00;
+}
+
+ul 
+{
+  list-style-type: none;
+}
+
+body
+{
+	font-family: 'Jura', sans-serif;
+	min-height: 100vh;
+	color: #fff;
+	background-color: #0d0a2b;
+	background-image: url('assets/images/bg.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.bg-rgba-b
+{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-rgba-b .dropdown-menu
+{
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.nav-link {
+	font-family: 'LT Binary Neue Round', sans-serif;
+}
+
+.dropdown {
+	font-family: 'LT Binary Neue Round', sans-serif;
+}
+
+.bg-rgba-b .dropdown-menu .dropdown-item, .bg-rgba-b .navbar-brand, .bg-rgba-b .container-fluid .navbar-collapse ul li a
+{
+	color: #fff;
+}
+
+.bg-rgba-b .dropdown-menu .dropdown-item:hover
+{
+	color: #FFFF00;
+	background-color: #000;
+}
+
+.bg-rgba-b .container-fluid .navbar-collapse ul li a:hover
+{
+	color: #FFFF00;
+}
+
+#navbarSupportedContent
+{
+	color: #fff;
+	list-style-type: none;
+}
+
+#backTop{
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  display: none;
+
+}
+
+.card 
+{
+	width: 18rem;
+}
+
+.card-text
+{
+	color:white;
+}
+
+.card-attributes
+
+.l-grey
+{
+	color:#D3D3D3;
+}
+
+.rank
+{
+	font-size:14px;
+}
+
+.card .card-title
+{
+	color: #fff;
+	font-family: 'Jura', sans-serif;
+}
+
+.card .card-attributes 
+{
+	font-size: 12px;
+
+}
+
+.card .trait-txt{
+	color: #fff;
+}
+
+.card .card-attributes a
+{
+	color: lightblue; 
+	text-decoration: none;
+}
+
+.title 
+{
+	color: #FFFF00;
+	margin-top: 48px;
+	margin-bottom: 32px;
+}
+
+.description 
+{
+	margin-bottom: 32px;
+	font-family: 'LT Binary Neue', sans-serif;
+}
+
+.txt-desc 
+{
+	color: #FFFF00;
+}
+
+.navbar-toggler span
+{
+	color: #FFF;
+}
+
+.navbar-toggler:active
+{
+	background-color: #FFFF00;
+}
+
+.toast
+{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	bottom: 10px;
+	right: 80%;
+	z-index: 1000;
+}
+
+.toast-header, .toast-header button
+{
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+}
+
+.toast-body 
+{
+	font-size: 18px;
+	color: #fff;
+}
+
+.toast-body-span 
+{
+	font-weight: bold;
+	color: yellow;
+}
+
+.card{
+	margin: 0 auto;
+}
+
+.emoji-18
+{
+	font-size: 18px;
+}
+.emoji-24
+{
+	font-size: 24px;
+}
+.emoji-32
+{
+	font-size: 32px;
+}

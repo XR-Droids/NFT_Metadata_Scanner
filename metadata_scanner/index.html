@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Will">
+	<meta name="description" content="XR-Droids Tools">
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css?n=1">
+	<title>NFT Metadata Scanner</title>
+</head>
+<body>
+	<div class="container" id="home">
+		<center>
+			<h2 class="title"><span class="emoji-32">&#128270;</span> NFT Metadata Scanner</h2>
+			<h5 class="description">Simply replace the <span class="txt-desc">_metadata.json</span> and the <span class="txt-desc">images</span> inside the 'Build' folder to make some magic <span class="emoji-24">&#129668;</span></h5>
+		</center>
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="7000">
+			<div class="toast-header">
+			    <strong class="me-auto"><span class="emoji-18">&#129302;&#128270;</span><span> XR-Droid Helper</span></strong>
+			</div>
+			<div class="toast-body" id="alert-bot"></div>
+		</div>
+		<a href="#home" id="backTop"><img width="48" src="assets/images/arrow_up.gif"></a>
+		<nav class="navbar navbar-expand-lg bg-rgba-b">
+		  	<div class="container-fluid">
+		  		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  			<span class="emoji-24">&#709;</span></button>
+		    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="attributes-output">
+			        	<li class="nav-item">
+			          		<a class="nav-link active" aria-current="page" href="./index.html">All Items</a>
+			          	</li>
+		        	</ul>
+		        	<ul class="navbar-nav mb-lg-0">
+		        		<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</a> 
+            				<ul class="dropdown-menu" id="sort-options">
+
+            				</ul>
+            			</li>
+		        	</ul>
+		    	</div>
+		  	</div>
+		</nav>
+		<br>
+		<div id="data-output"></div>
+	</div>
+	<footer>
+		<center><br><h5>Made with <span class="emoji-32">&#128126;</span> by XR-Droids</h5></center>
+	</footer>
+	<script src="assets/vendor/jquery-3.6.4.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="scanner.js?n=1"></script>
+	<script type="text/javascript">
+    $(document).ready(function()
+    {
+        let mybutton = document.getElementById("backTop");
+        window.onscroll = function() 
+        {
+            scrollFunction()
+        };
+        function scrollFunction() 
+        {
+          if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) 
+          {
+            mybutton.style.display = "block";
+          } 
+          else 
+          {
+            mybutton.style.display = "none";
+          }
+        }
+    });
+    </script>
+</body>
+</html>
