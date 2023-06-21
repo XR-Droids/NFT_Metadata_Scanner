@@ -1,11 +1,6 @@
 # XR-Droids Tools 🤖
 
-![](https://github.com/XR-Droids/XR-Droids_Tools/blob/main/logo.png)
-
-[🌐 Website](https://xrdroids.com)
-
-[🐦 Twitter](https://twitter.com/xr_droids)
-
+![metascan](https://github.com/XR-Droids/NFT_Metadata_Scanner/assets/134576787/f2a6ab6e-b865-40d7-8045-f4461186e2de)
 
 # NFT Metadata Scanner 🔎
 
