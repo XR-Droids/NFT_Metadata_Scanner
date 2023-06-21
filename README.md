@@ -17,7 +17,7 @@ This tool beautifies the output of NFT collections by calculating the rarity sco
 1. Run this command or simply download the repository
 
 ```sh
-git clone https://github.com/XR-Droids/xrdroids_tools.git
+git clone https://github.com/XR-Droids/NFT_Metadata_Scanner.git
 ```
 
 2. From the root of the folder, run this command
