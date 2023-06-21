@@ -6,7 +6,7 @@
 
 ![](https://github.com/XR-Droids/XR-Droids_Tools/blob/main/banner.png)
 
-This tool beautifies the output of NFT collections by calculating the rarity score points and ranks based on layers rarity
+This tool is a JSON metadata viewer for NFTs, where is possible to check for the rarity score points and ranks within a navigable HTML list
 
 ## Installation 🛠️
 
