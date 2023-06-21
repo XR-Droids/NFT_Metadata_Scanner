@@ -18,7 +18,7 @@
  */
 
 const metadataFile 	= `../build/json/_metadata.json`; 
-const nftPath			= `../build/images/`;
+const nftPath		= `../build/images/`;
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
@@ -28,9 +28,9 @@ let keyOfValue = params.key;
 let valueOfKey = params.attr;
 let sortBy 		= params.sortBy;
 
-let alertBot 				= document.querySelector("#alert-bot");
-let attributesOutput		= document.querySelector("#attributes-output");
-let dataOutput 			= document.querySelector("#data-output");
+let alertBot 		= document.querySelector("#alert-bot");
+let attributesOutput	= document.querySelector("#attributes-output");
+let dataOutput 		= document.querySelector("#data-output");
 
 let sortOptionsBtn 	= document.querySelector("#sort-options");
 
@@ -45,7 +45,7 @@ let uniqueAttributeCounts 	= [];
 let uniqueAttributeRarity 	= [];
 
 let itemList 	= [];
-let rankedList = [];
+let rankedList  = [];
 
 let attributesBtnList = [];
 
@@ -71,22 +71,21 @@ fetch(metadataFile)
 })
 .then(function(nfts)
 {
-   // FIND ALL ATTRIBUTES
-   for(let occurrence of nfts)
+	// FIND ALL ATTRIBUTES
+   	for(let occurrence of nfts)
 	{
 	   for (i = 0; i < occurrence.attributes.length; i++) 
 	   {
-			let idx = uniqueAttributes.findIndex((object) => { 
-				if (object.trait_type === occurrence.attributes[i].trait_type 
-					&& object.value === occurrence.attributes[i].value) 
-				{ return true; }});
-	      if (idx === -1) 
-	      {
+		let idx = uniqueAttributes.findIndex((object) => { 
+			if (object.trait_type === occurrence.attributes[i].trait_type && object.value === occurrence.attributes[i].value) 
+			{ return true; }});
+	      	if (idx === -1) 
+	      	{
 	        	attributesBtnList.push({trait_type: occurrence.attributes[i].trait_type, value: occurrence.attributes[i].value});
-	         uniqueAttributes.push({trait_type: occurrence.attributes[i].trait_type, value: occurrence.attributes[i].value});
-	      }
+	         	uniqueAttributes.push({trait_type: occurrence.attributes[i].trait_type, value: occurrence.attributes[i].value});
+	      	}
 	   }
-   }
+   	}
 	
 	// GROUP ATTRIBUTES BY TRAITS FOR THE NAVIGATION MENU
 	const traitsObj = {};
@@ -110,15 +109,14 @@ fetch(metadataFile)
 	}
 	for(trait of sortedObject)
 	{  
-
 		btnListAttrOutput += `  <li class="nav-item dropdown">
-											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             								${trait.trait_type} 
-            							</a> 
-            							<ul class="dropdown-menu">`;
+            					</a> 
+            					<ul class="dropdown-menu">`;
       
 		// IF KEYS SEPARATED BY SPACES AND 2+ WORDS ATTR -> ADD UNDERSCORE
-      let urlKey = '';
+      		let urlKey = '';
 		let sKey = trait.trait_type.split(" ");
 		if (sKey.length > 1) 
 		{
@@ -127,7 +125,9 @@ fetch(metadataFile)
 				if (j == sKey.length-1) 
 				{
 					urlKey += sKey[j];
-				}else{
+				}
+				else
+				{
 					urlKey += sKey[j]+'_';
 				}
 			}
@@ -161,7 +161,7 @@ fetch(metadataFile)
 			btnListAttrOutput += `		<li><a class="dropdown-item" href="./index.html?key=${urlKey}&attr=${urlAttr}">${v}</a></li>`;
 		}
 		btnListAttrOutput += `		</ul>
-        							   </li>`;
+        				</li>`;
 	}
 	
 
@@ -169,16 +169,15 @@ fetch(metadataFile)
 	for (var i = 0; i < uniqueAttributes.length; i++) 
 	{
 		var count = 0;
-	   for(let occurrence of nfts)
+	  	 for(let occurrence of nfts)
 		{
-	    	for (var j = 0; j < occurrence.attributes.length; j++) 
-	    	{
-	    		if (uniqueAttributes[i].value === occurrence.attributes[j].value 
-	    			&& uniqueAttributes[i].trait_type === occurrence.attributes[j].trait_type) 
-            {
-                count++; 
-            };
-	    	}
+	    		for (var j = 0; j < occurrence.attributes.length; j++) 
+	    		{
+	    			if (uniqueAttributes[i].value === occurrence.attributes[j].value && uniqueAttributes[i].trait_type === occurrence.attributes[j].trait_type) 
+            			{
+                			count++; 
+           			 };
+	    		}
 		}
 		uniqueAttributeCounts.push(count);
 	}
@@ -199,16 +198,15 @@ fetch(metadataFile)
 		// GET TRAITS AND RELATED VALUES and
 		// GET ATTRIBUTES RARITY FOR EACH RELATED TRAIT VALUE
 		for (var j = 0; j < nft.attributes.length; j++) 
-	    {
+	    	{
 			for (var i = 0; i < uniqueAttributes.length; i++) 
 			{
-	    		if (uniqueAttributes[i].value === nft.attributes[j].value
-	    			&& uniqueAttributes[i].trait_type === nft.attributes[j].trait_type) 
-            {
-            	nftAttributesRarity.push(uniqueAttributeRarity[i]);
-            	traits.push({trait_type: nft.attributes[j].trait_type, value: nft.attributes[j].value+" ("+uniqueAttributeRarity[i].toFixed(2)+"%)"});
-            };
-	    	}
+	    			if (uniqueAttributes[i].value === nft.attributes[j].value && uniqueAttributes[i].trait_type === nft.attributes[j].trait_type) 
+            			{
+            				nftAttributesRarity.push(uniqueAttributeRarity[i]);
+		            		traits.push({trait_type: nft.attributes[j].trait_type, value: nft.attributes[j].value+" ("+uniqueAttributeRarity[i].toFixed(2)+"%)"});
+		            	};
+	    		}
 		}
 
 		// GET RARITY SCORE FROM ATTRIBUTES RARITY
@@ -242,13 +240,13 @@ fetch(metadataFile)
 
 	    	if (faN < fbN) 
 	    	{
-	        return -1;
+	        	return -1;
 	    	}
 	    	if (faN > fbN) 
 	    	{
-	        return 1;
+	        	return 1;
 	    	}
-	    	return 0;
+	    		return 0;
 		});
 	}
 	// SORT Z-A
@@ -261,13 +259,13 @@ fetch(metadataFile)
 
 	    	if (faN > fbN) 
 	    	{
-	        return -1;
+	        	return -1;
 	    	}
 	    	if (faN < fbN) 
 	    	{
-	        return 1;
+	        	return 1;
 	    	}
-	    	return 0;
+	    		return 0;
 		});
 	}
 	// SORT BY SCORE DESC
@@ -339,7 +337,9 @@ fetch(metadataFile)
 						if (j == sKey.length-1) 
 						{
 							urlKey += sKey[j];
-						}else{
+						}
+						else
+						{
 							urlKey += sKey[j]+'_';
 						}
 					}
@@ -356,7 +356,9 @@ fetch(metadataFile)
 								if (j == sAttribute.length-2) 
 								{
 									urlAttr += sAttribute[j];
-								}else{
+								}
+								else
+								{
 									urlAttr += sAttribute[j]+'_';
 								}
 							}
@@ -391,7 +393,9 @@ fetch(metadataFile)
 								if (j == sAttribute.length-2) 
 								{
 									urlAttr += sAttribute[j];
-								}else{
+								}
+								else
+								{
 									urlAttr += sAttribute[j]+'_';
 								}
 							}
@@ -439,7 +443,7 @@ fetch(metadataFile)
 				for (var i = 0; i < nft.attributes.length; i++) 
 				{
 
-			        nftOutput += `				<tr><td class="trait-txt">${nft.attributes[i].trait_type}:&nbsp;</td> 
+			        	nftOutput += `				<tr><td class="trait-txt">${nft.attributes[i].trait_type}:&nbsp;</td> 
 			        									<td class="trait-txt">${nft.attributes[i].value}</td></tr>`;
 				}
 				nftOutput +=`					</table>
