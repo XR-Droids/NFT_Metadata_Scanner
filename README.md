@@ -22,8 +22,6 @@ git clone https://github.com/XR-Droids/NFT_Metadata_Scanner.git
 
 2. From the root of the folder, run this command
 
-If node is being installed
-
 ```sh
 npm install
 ```
