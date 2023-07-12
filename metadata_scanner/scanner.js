@@ -1,5 +1,5 @@
 /**
- * 🔎 NFT METADATA SCANNER v1.0
+ * 🔎 NFT METADATA SCANNER v1.1
  * ℹ️ The NFT scanner reads the metadata JSON file, assigns to each items the  
  *   rarity score points based on attributes rarity, and produces the results in 
  *   a HTML list. 
@@ -13,8 +13,8 @@
  *
  * Creator: Will
  *
- * Released on: May 06, 2023
- * Updated on: Jun 21, 2023
+ * Created on: May 06, 2023
+ * Updated on: July 12, 2023
  */
 
 const metadataFile 	= `../build/json/_metadata.json`; 
@@ -24,8 +24,8 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-let keyOfValue = params.key;
-let valueOfKey = params.attr;
+let keyOfValue 		= params.key;
+let valueOfKey 		= params.attr;
 let sortBy 		= params.sortBy;
 
 let alertBot 		= document.querySelector("#alert-bot");
@@ -46,8 +46,6 @@ let uniqueAttributeRarity 	= [];
 
 let itemList 	= [];
 let rankedList  = [];
-
-let attributesBtnList = [];
 
 const scoreSorterAsc = (a, b) => {
    return b.score - a.score;
@@ -74,25 +72,24 @@ fetch(metadataFile)
 	// FIND ALL ATTRIBUTES
    	for(let occurrence of nfts)
 	{
-	   for (i = 0; i < occurrence.attributes.length; i++) 
-	   {
-		let idx = uniqueAttributes.findIndex((object) => { 
-			if (object.trait_type === occurrence.attributes[i].trait_type && object.value === occurrence.attributes[i].value) 
-			{ return true; }});
-	      	if (idx === -1) 
-	      	{
-	        	attributesBtnList.push({trait_type: occurrence.attributes[i].trait_type, value: occurrence.attributes[i].value});
-	         	uniqueAttributes.push({trait_type: occurrence.attributes[i].trait_type, value: occurrence.attributes[i].value});
-	      	}
-	   }
-   	}
+		for (i = 0; i < occurrence.attributes.length; i++) 
+	   	{
+			let idx = uniqueAttributes.findIndex((object) => { 
+				if (object.trait_type === occurrence.attributes[i].trait_type && object.value === occurrence.attributes[i].value) { return true; }
+			});
+		      	if (idx === -1) 
+		      	{
+		         	uniqueAttributes.push({trait_type: occurrence.attributes[i].trait_type, value: occurrence.attributes[i].value});
+		      	}
+	   	}
+  	 }
 	
 	// GROUP ATTRIBUTES BY TRAITS FOR THE NAVIGATION MENU
 	const traitsObj = {};
-	for(const {trait_type, value} of attributesBtnList) 
+	for(const {trait_type, value} of uniqueAttributes) 
 	{
-	   if(!traitsObj[trait_type]) traitsObj[trait_type] = [];
-	   traitsObj[trait_type].push({ value });
+	   	if(!traitsObj[trait_type]) traitsObj[trait_type] = [];
+	   	traitsObj[trait_type].push({ value });
 	}
 
 	// OUTPUT GROUPED TRAITS LIST AS NAV MENU
@@ -234,37 +231,37 @@ fetch(metadataFile)
 	if(sortBy === "az") 
 	{
 		rankedList.sort((a, b) => {
-	    	let fa = a.name.substring(a.name.indexOf("#")+1), fb = b.name.substring(b.name.indexOf("#")+1);
-	    	let faN = Number(fa);
-	    	let fbN = Number(fb);
-
-	    	if (faN < fbN) 
-	    	{
-	        	return -1;
-	    	}
-	    	if (faN > fbN) 
-	    	{
-	        	return 1;
-	    	}
-	    		return 0;
+		    	let fa = a.name.substring(a.name.indexOf("#")+1), fb = b.name.substring(b.name.indexOf("#")+1);
+		    	let faN = Number(fa);
+		    	let fbN = Number(fb);
+	
+		    	if (faN < fbN) 
+		    	{
+		        	return -1;
+		    	}
+		    	if (faN > fbN) 
+		    	{
+		        	return 1;
+		    	}
+		    	return 0;
 		});
 	}
 	// SORT Z-A
 	if(sortBy === "za") 
 	{
 		rankedList.sort((a, b) => {
-	    	let fa = a.name.substring(a.name.indexOf("#")+1), fb = b.name.substring(b.name.indexOf("#")+1);
-	    	let faN = Number(fa);
-	    	let fbN = Number(fb);
-
-	    	if (faN > fbN) 
-	    	{
-	        	return -1;
-	    	}
-	    	if (faN < fbN) 
-	    	{
-	        	return 1;
-	    	}
+		    	let fa = a.name.substring(a.name.indexOf("#")+1), fb = b.name.substring(b.name.indexOf("#")+1);
+		    	let faN = Number(fa);
+		    	let fbN = Number(fb);
+	
+		    	if (faN > fbN) 
+		    	{
+		        	return -1;
+		    	}
+		    	if (faN < fbN) 
+		    	{
+		        	return 1;
+		    	}
 	    		return 0;
 		});
 	}
@@ -345,7 +342,6 @@ fetch(metadataFile)
 					}
 					if (urlKey == keyOfValue) 
 					{
-						
 						let urlAttr = '';
 						// IF ATTRIBUTES SEPARATED BY SPACES AND 2+ WORDS ATTR -> ADD UNDERSCORE
 						let sAttribute = nft.attributes[i].value.split(" ");
@@ -416,7 +412,6 @@ fetch(metadataFile)
 						findKey++;
 					}
 				}	
-
 			}
 
 			if (findKey > 0 && findAttr > 0) 
@@ -479,7 +474,6 @@ fetch(metadataFile)
 											 <li><a class="dropdown-item" href="./index.html?key=${keyOfValue}&attr=${valueOfKey}">Score Asc</a></li>
 											 <li><a class="dropdown-item" href="./index.html?key=${keyOfValue}&attr=${valueOfKey}&sortBy=sd">Score Desc</a></li>`;
 	}
-
 	attributesOutput.innerHTML += btnListAttrOutput;
 	dataOutput.innerHTML = nftOutput;
 });
